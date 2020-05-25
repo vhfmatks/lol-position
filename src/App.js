@@ -28,7 +28,7 @@ class App extends Component {
                     display={this.state.disc.display}> </Question>
           :
            this.state.position.posYn ? <div></div>
-            :  <h1> <button onClick={this.analyzeClick.bind(this)}>  분석 </button> </h1> }
+            :  <h1> <button onClick={this.analyzeClick.bind(this)}>  분석하기 </button> </h1> }
         {
           this.state.position.posYn ?
             <h1> 
