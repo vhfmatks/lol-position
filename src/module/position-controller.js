@@ -1,6 +1,7 @@
 import posData from '../data/posData';
+import weightQst from '../data/weightData';
 export default function  analyzeClick() {
-    function customSort(a, b) { if(a.total == b.total){ return 0} return a.total < b.total ? 1 : -1; }
+    function customSort(a, b) { if(a.score == b.totval){ return 0} return a.score < b.score ? 1 : -1; }
     var discScore  = [
       {id:"D", score:0},{id:"I", score:0},{id:"S", score:0},{id:"C", score:0},
     ]
@@ -39,6 +40,22 @@ export default function  analyzeClick() {
         posRslt[3].score += addScore;
       }
     });
+    console.log("pre",posRslt);
+    this.state.weight.questions.map( (item, index)=>{
+      item.selection.map((sItem,sIndex)=>{
+        if(sItem.answer == item.answer) {
+          sItem.obj.map( (oItem, oIndex) => {
+            posRslt.map( (pItem, pIndex)=>{
+              if(oItem=== pItem.position ){
+                console.log(oItem, pItem, pIndex)
+                posRslt[pIndex].score += 3;
+              }
+            });
+          });
+        }
+      });
+    });
+    console.log("post",posRslt);
     var newState = {
       posYn:true, position : posRslt
     };

@@ -8,7 +8,6 @@ export default class Question extends Component {
         var { submitAnswer, display } = this.props;
         return (
             <div>
-                <h1>{display}</h1>
                 {
                     this.props.data.map((item, index)=>{
                         return (
