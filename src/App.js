@@ -55,7 +55,7 @@ class App extends Component {
             </div> 
           : 
           <div>
-            <h1> {this.state.disc.display + this.state.weight.display + 1} 
+            <h1> {this.state.disc.display + 1 + (!this.state.disc.discYn? this.state.weight.display+1 : 0 ) } 
               / {this.state.disc.questions.length + this.state.weight.questions.length}</h1>
           </div>
         }
