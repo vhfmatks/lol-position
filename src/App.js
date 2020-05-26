@@ -13,6 +13,10 @@ import discQst from './data/discData';
 import posData from './data/posData';
 import weightQst from './data/weightData';
 
+import { ThemeProvider } from 'emotion-theming';
+import theme from '@rebass/preset';
+
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -28,8 +32,24 @@ class App extends Component {
   
   render(){
     return (
-      <div className="App">
-        
+      <ThemeProvider  theme={theme} >
+        <div className="App">
+
+        {
+          !this.state.disc.discYn && !this.state.weight.weightYn ?
+            <div>
+              {this.state.position.posYn ? <div></div>
+                :  <h1> <button onClick={this.analyzeClick.bind(this)}> 분석하기 </button> </h1> 
+              }
+            </div> 
+          : 
+          <div>
+            {this.state.disc.discYn ? <h1>다음 중 당신을 가장 잘 표현할 수 있는 문구를 고르세요.</h1>
+            : <div>{this.state.weight.weightYn? <h1>다음의 질문에 가장 적절한 답을 고르세요.</h1> : <div></div> }</div>}
+            <h3>( {this.state.disc.display + 1 + (!this.state.disc.discYn? this.state.weight.display+1 : 0 ) } 
+              / {this.state.disc.questions.length + this.state.weight.questions.length})</h3>
+          </div>
+        }
         {/* 설문1 */}
         { this.state.disc.discYn ? 
           <div>
@@ -46,26 +66,15 @@ class App extends Component {
                             ></SelectQuestion>
             :<div></div>
         }
-        {
-          !this.state.disc.discYn && !this.state.weight.weightYn ?
-            <div>
-              {this.state.position.posYn ? <div></div>
-                :  <h1> <button onClick={this.analyzeClick.bind(this)}> 분석하기 </button> </h1> 
-              }
-            </div> 
-          : 
-          <div>
-            <h1> {this.state.disc.display + 1 + (!this.state.disc.discYn? this.state.weight.display+1 : 0 ) } 
-              / {this.state.disc.questions.length + this.state.weight.questions.length}</h1>
-          </div>
-        }
+
         {/* 결과 */}
         {
           this.state.position.posYn ?
             <Result data={this.state.position.position}></Result>
             : <h1></h1>
         }
-      </div>
+        </div>
+      </ThemeProvider>
     );
   }
 }
