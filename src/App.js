@@ -34,7 +34,6 @@ class App extends Component {
     return (
       <ThemeProvider  theme={theme} >
         <div className="App">
-
         {
           !this.state.disc.discYn && !this.state.weight.weightYn ?
             <div>

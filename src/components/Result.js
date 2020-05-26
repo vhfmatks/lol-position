@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CanvasJSReact from '../canvas/canvasjs.react';
+import {Image, Card, Heading,Text} from 'rebass';
 
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -15,8 +16,18 @@ export default class Result extends Component {
             total += item.score
         });
         data.map((item, index)=>{
-            position.push({"position" : item.position, "score" : item.score , "ratio": Math.trunc(item.score/total*100)});
+            position.push(
+                {"position" : item.position, 
+                 "score" : item.score , 
+                "ratio": Math.trunc(item.score/total*100),
+                "description" : item.description,
+                "img" : item.img,
+                "name" : item.posNm
+                });
         })
+        function customSort(a, b) { if(a.score == b.score){ return 0} return a.score < b.score ? 1 : -1; }
+        position.sort(customSort);
+
         this.state = {
             data : position
         };
@@ -48,13 +59,24 @@ export default class Result extends Component {
 		}
         return (
             <div>
-                {/* {
-                    data.map((item, index)=>{
-                        return (
-                            <h3 key={index}>{item.position} , SCORE : {item.ratio}</h3>
-                        )
-                    })
-                } */}
+                <Card sx={{
+                    width:'50%',
+                    margin:'auto',
+                    border:'#0023 solid 5px'
+                }}>
+                    <Image src={data[0].img}></Image>
+                    <Heading>{data[0].name}</Heading>
+                    {
+                        data[0].description.split('\n').map((item, index)=>{
+                            return(
+                                <Text> {item} </Text>
+                            )
+                        })
+                    }
+                    {/* <Text>{data[0].description.replace(/\n/g,'<br>')}</Text> */}
+                </Card>
+           
+                <hr></hr>
                 <CanvasJSChart options = {options}
 				/* onRef={ref => this.chart = ref} */
 			/>
