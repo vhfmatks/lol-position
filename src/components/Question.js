@@ -16,9 +16,9 @@ export default class Question extends Component {
                                     key={index}
                                     sx={{
                                             cursor:'pointer',
-                                            ':hover' :{
-                                                backgroundColor : 'tomato',
-                                        }}}                      
+                                            // ':hover' :{
+                                            //     backgroundColor : 'tomato',}
+                                        }}                      
                                     onClick={()=>submitAnswer(display, item.type)}>
                                         <Heading> {item.msg} </Heading>
                             </Card>);

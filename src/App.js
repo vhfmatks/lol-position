@@ -15,7 +15,7 @@ import weightQst from './data/weightData';
 
 import { ThemeProvider } from 'emotion-theming';
 import theme from '@rebass/preset';
-
+import {Button} from 'rebass';
 
 class App extends Component {
   constructor(props){
@@ -38,7 +38,7 @@ class App extends Component {
           !this.state.disc.discYn && !this.state.weight.weightYn ?
             <div>
               {this.state.position.posYn ? <div></div>
-                :  <h1> <button onClick={this.analyzeClick.bind(this)}> 분석하기 </button> </h1> 
+                :  <h1> <Button onClick={this.analyzeClick.bind(this)}> 분석하기 </Button> </h1> 
               }
             </div> 
           : 

@@ -60,7 +60,7 @@ export default class Result extends Component {
         return (
             <div>
                 <Card sx={{
-                    width:'50%',
+                    width:'90%',
                     margin:'auto',
                     border:'#0023 solid 5px'
                 }}>
