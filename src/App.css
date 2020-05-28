@@ -1,7 +1,6 @@
 .App {
   text-align: center;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
-  -webkit-higlight-color:rgba(0,0,0,0)
+  font-family: 'Nanum+Gothic+Coding';
 }
 
 .App-logo {

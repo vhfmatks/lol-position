@@ -3,6 +3,10 @@ import firebaseConfig from '../firebase.config';
 import firebase, { database } from 'firebase';
 
 export default function  analyzeClick() {
+    if(this.state.lolid == null){
+      alert('아이디를 입력하세요');
+      return;
+    }
     function customSort(a, b) { if(a.score == b.score){ return 0} return a.score < b.score ? 1 : -1; }
     var discScore  = [
       {id:"D", score:0},{id:"I", score:0},{id:"S", score:0},{id:"C", score:0},

@@ -12,13 +12,13 @@ export default class SelectQuestion extends Component {
                         <div>
                             <Card key={index} 
                                   sx={
-                                      {cursor:'pointer',}
+                                      {cursor:'pointer',
+                                      margin:'10px',
+                                    }
                                   }
                                   onClick={()=>submitAnswer(display, item.answer)}
                                   >
-                                <Heading>
                                       {item.answer}
-                                </Heading>  
                             </Card>
                         </div>
                     )

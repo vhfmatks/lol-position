@@ -16,13 +16,15 @@ export default class Question extends Component {
                                     key={index}
                                     sx={{
                                             cursor:'pointer',
+                                            margin:'10px',
                                             // ':focus' : {outline:0},
                                             // // '-webkit-tap-highlight-color': '#ffffff',
                                             // ':hover' :{
                                             //     backgroundColor : 'tomato',}
                                         }}                      
                                     onClick={()=>submitAnswer(display, item.type)}>
-                                        <Heading> {item.msg} </Heading>
+                                        {/* <Heading> {item.msg} </Heading> */}
+                                        {item.msg}
                             </Card>);
                     })  
                 }
