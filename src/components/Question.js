@@ -16,6 +16,8 @@ export default class Question extends Component {
                                     key={index}
                                     sx={{
                                             cursor:'pointer',
+                                            // ':focus' : {outline:0},
+                                            // // '-webkit-tap-highlight-color': '#ffffff',
                                             // ':hover' :{
                                             //     backgroundColor : 'tomato',}
                                         }}                      

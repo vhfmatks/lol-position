@@ -1,5 +1,7 @@
 import posData from '../data/posData';
-import weightQst from '../data/weightData';
+import firebaseConfig from '../firebase.config';
+import firebase, { database } from 'firebase';
+
 export default function  analyzeClick() {
     function customSort(a, b) { if(a.score == b.score){ return 0} return a.score < b.score ? 1 : -1; }
     var discScore  = [
@@ -46,7 +48,6 @@ export default function  analyzeClick() {
           sItem.obj.map( (oItem, oIndex) => {
             posRslt.map( (pItem, pIndex)=>{
               if(oItem=== pItem.position ){
-                console.log(oItem, pItem, pIndex)
                 posRslt[pIndex].score += 3;
               }
             });
@@ -58,6 +59,38 @@ export default function  analyzeClick() {
       posYn:true, position : posRslt
     };
     this.setState({
-      position : newState
-    });
+      position : newState,
+    }); 
+
+    var firbaseRtn = insertData(this.state);
   }
+
+function insertData(state){
+  if(!firebase.apps.length)
+  firebase.initializeApp(firebaseConfig);
+
+  var newPostKey = firebase.database().ref().child('users').push().key;
+
+  var disc = state.disc.questions;
+  var weight = state.weight.questions;
+  var position = [];
+  state.position.position.map((item, index)=>{
+    var obj = { pos : item.position, score : item.score }
+    position.push(obj);
+  })
+
+  var insertData = {
+    lolid : state.lolid,
+    disc,
+    weight,
+    position
+  }
+  
+
+  var updates = {};
+  updates['/users/'+newPostKey] = insertData;
+
+
+  return firebase.database().ref().update(updates);
+}
+

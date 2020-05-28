@@ -1,6 +1,5 @@
 export default function weightClick(curDisplay, pAnswer){
   var newState = {}
-  console.log(this.state.weight.questions.length, curDisplay, pAnswer);
   if( this.state.weight.questions.length-1 === curDisplay)
    newState =  {
       ...this.state.weight, weightYn : false

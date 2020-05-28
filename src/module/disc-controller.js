@@ -1,6 +1,5 @@
 export default function discClick(curDisplay, pAnswer){
     var newState = {}
-    console.log(this.state.disc.questions.length, curDisplay, pAnswer);
     if( this.state.disc.questions.length-1 === curDisplay)
       newState =  {
         ...this.state.disc, discYn : false

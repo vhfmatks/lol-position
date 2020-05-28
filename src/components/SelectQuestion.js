@@ -12,10 +12,7 @@ export default class SelectQuestion extends Component {
                         <div>
                             <Card key={index} 
                                   sx={
-                                      {cursor:'pointer',
-                                       ':hover' : {
-                                            backgroundColor:'tomato'
-                                       }}
+                                      {cursor:'pointer',}
                                   }
                                   onClick={()=>submitAnswer(display, item.answer)}
                                   >
