@@ -13,6 +13,8 @@
     "firebase": "^7.14.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-chart": "^0.1.2",
+    "react-google-charts": "^3.0.15",
     "react-scripts": "3.4.1",
     "rebass": "^4.0.7"
   },

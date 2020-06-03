@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import CanvasJSReact from '../canvas/canvasjs.react';
 import {Image, Card, Heading,Text} from 'rebass';
-
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import Graph from './Graph';
 
 export default class Result extends Component {
     constructor(props){
@@ -33,30 +30,11 @@ export default class Result extends Component {
         };
     }
     render() {
-        var { data } = this.state;
-        const options = {
-			exportEnabled: true,
-			animationEnabled: true,
-			title: {
-				text: "LOL 포지션 분석 결과"
-			},
-			data: [{
-				type: "pie",
-				startAngle: 75,
-				toolTipContent: "<b>{label}</b>: {y}%",
-				showInLegend: "true",
-				legendText: "{label}",
-				indexLabelFontSize: 16,
-				indexLabel: "{label} - {y}%",
-				dataPoints: [
-					{ y: data[0].ratio , label: data[0].position },
-					{ y: data[1].ratio, label: data[1].position },
-					{ y: data[2].ratio, label: data[2].position },
-					{ y: data[3].ratio, label: data[3].position},
-					{ y: data[4].ratio, label: data[4].position }
-				]
-			}]
-		}
+        //var { data } = this.state;
+        var data = [];
+        data = this.state.data.map( (item, index) => {
+            return { "label":item.name, "score":item.ratio }
+        })
         return (
             <div>
                 <Card sx={{
@@ -64,26 +42,21 @@ export default class Result extends Component {
                     margin:'auto',
                     border:'#0023 solid 5px'
                 }}>
-                    <Image src={data[0].img}></Image>
-                    <Heading>{data[0].name}</Heading>
+                    <Image src={this.state.data[0].img}></Image>
+                    <Heading>{this.state.data[0].name}</Heading>
                     {
-                        data[0].description.split('\n').map((item, index)=>{
+                        this.state.data[0].description.split('\n').map((item, index)=>{
                             return(
                                 <Text> {item} </Text>
                             )
                         })
                     }
-                    {/* <Text>{data[0].description.replace(/\n/g,'<br>')}</Text> */}
                 </Card>
            
                 <hr></hr>
-                <CanvasJSChart options = {options}
-				/* onRef={ref => this.chart = ref} */
-			/>
+
+                <Graph data={data} />         
             </div>
         )
-    }
-    componentDidMount(){
-
     }
 }

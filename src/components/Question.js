@@ -6,7 +6,7 @@ export default class Question extends Component {
         super(props);
     }
     render() {
-        var { submitAnswer, display } = this.props;
+        var { submitAnswer, display, preClick, answer } = this.props;
         return (
             <div>
                 {
@@ -17,16 +17,17 @@ export default class Question extends Component {
                                     sx={{
                                             cursor:'pointer',
                                             margin:'10px',
-                                            // ':focus' : {outline:0},
-                                            // // '-webkit-tap-highlight-color': '#ffffff',
-                                            // ':hover' :{
-                                            //     backgroundColor : 'tomato',}
+                                            backgroundColor : item.type === answer ? "tomato" : "white"
                                         }}                      
                                     onClick={()=>submitAnswer(display, item.type)}>
                                         {/* <Heading> {item.msg} </Heading> */}
                                         {item.msg}
                             </Card>);
                     })  
+                }
+                {
+                   display > 0 ? <Button style={{margin:'1rem', float:"left"}} onClick={()=>preClick(display,'disc')}> 이전 </Button>
+                   : <div></div>
                 }
             </div>
         )

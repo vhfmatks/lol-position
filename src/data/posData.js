@@ -19,7 +19,7 @@ var posData = [
       결단력이 있으며, 야망이 있지만 대외적으로 표현하지 않으며, 놀랄 만큼 호기심이 많지만 쓸데없는데 에너지를 낭비하는 법이 없습니다.
       마치 체스를 두듯 새로운 계획이나 전술, 그리고 대책을 세워가며 상대방 머리 위에서 수를 두며 허를 찌르는 기술로 상황을 유리하게 몰고 가는 것을 즐깁니다.
       ` },
-    { position : 'mid', score : 0 , posNm : 'MID',img : './img/mid.png',
+    { position : 'mid', score : 0, posNm : 'MID',img : './img/mid.png',
     description : `
     당신의 포지션은 팀의 중심이자 핵심, Mid!
 
