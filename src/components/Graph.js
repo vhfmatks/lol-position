@@ -18,7 +18,7 @@ export default class Graph extends Component {
         return (
             <div>
                 <Chart
-                    width={'500px'}
+                    width={'100%'}
                     height={'300px'}
                     chartType="BarChart"
                     loader={<div>Loading Chart</div>}

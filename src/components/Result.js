@@ -36,7 +36,7 @@ export default class Result extends Component {
             return { "label":item.name, "score":item.ratio }
         })
         return (
-            <div>
+            <div style={{margin:'1rem'}}>
                 <Card sx={{
                     width:'90%',
                     margin:'auto',
@@ -53,8 +53,9 @@ export default class Result extends Component {
                     }
                 </Card>
            
-                <hr></hr>
-
+                
+                <div style={{margin:'1rem'}} className="addthis_inline_share_toolbox"></div>
+                
                 <Graph width="80%" data={data} />       
 
                 <iframe src="https://coupa.ng/bDAat8" width="120" height="240" frameborder="0" scrolling="no"></iframe>  
