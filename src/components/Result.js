@@ -55,7 +55,7 @@ export default class Result extends Component {
            
                 <hr></hr>
 
-                <Graph data={data} />         
+                <Graph width="80%" data={data} />         
             </div>
         )
     }
