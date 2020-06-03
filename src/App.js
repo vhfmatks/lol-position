@@ -17,6 +17,7 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from '@rebass/preset';
 import { Button, Box } from 'rebass';
 import { Label, Input } from '@rebass/forms';
+import Graph from './components/Graph';
 
 
 
@@ -161,6 +162,7 @@ class App extends Component {
             data-ad-unit    = "DAN-u87wjap0cdv9" 
             data-ad-width   = "320" 
             data-ad-height  = "100"></ins> 
+            
         </div>
       </ThemeProvider>
     );

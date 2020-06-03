@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Image, Card, Heading,Text} from 'rebass';
 import Graph from './Graph';
+import LoadScript from 'react-load-script';
 
 export default class Result extends Component {
     constructor(props){
@@ -53,14 +54,19 @@ export default class Result extends Component {
                     }
                 </Card>
            
+                <div style={{margin:'1rem'}}>
+                    <LoadScript url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ed746b735134eec"></LoadScript>
+                    <div className="addthis_inline_share_toolbox"></div>
+                </div>
                 
-                <div style={{margin:'1rem'}} className="addthis_inline_share_toolbox"></div>
                 
                 <Graph width="80%" data={data} />       
-
+                
+               
                 <iframe src="https://coupa.ng/bDAat8" width="120" height="240" frameborder="0" scrolling="no"></iframe>  
                 <iframe src="https://coupa.ng/bDAaeU" width="120" height="240" frameborder="0" scrolling="no"></iframe>
                 <iframe src="https://coupa.ng/bDz9Vw" width="120" height="240" frameborder="0" scrolling="no"></iframe>
+
             </div>
         )
     }
