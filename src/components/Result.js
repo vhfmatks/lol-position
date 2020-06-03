@@ -55,7 +55,11 @@ export default class Result extends Component {
            
                 <hr></hr>
 
-                <Graph width="80%" data={data} />         
+                <Graph width="80%" data={data} />       
+
+                <iframe src="https://coupa.ng/bDAat8" width="120" height="240" frameborder="0" scrolling="no"></iframe>  
+                <iframe src="https://coupa.ng/bDAaeU" width="120" height="240" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://coupa.ng/bDz9Vw" width="120" height="240" frameborder="0" scrolling="no"></iframe>
             </div>
         )
     }

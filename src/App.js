@@ -157,6 +157,10 @@ class App extends Component {
             }
             </div>
           }
+          <ins className="kakao_ad_area" style={{marginTop:'1rem', display:"none", width:"100%"}}
+            data-ad-unit    = "DAN-u87wjap0cdv9" 
+            data-ad-width   = "320" 
+            data-ad-height  = "100"></ins> 
         </div>
       </ThemeProvider>
     );
