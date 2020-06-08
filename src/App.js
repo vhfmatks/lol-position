@@ -102,7 +102,8 @@ class App extends Component {
           {this.state.startYn ? 
             <div> 
               <h2> 성향별 LOL 포지션 분석 </h2>
-              <img src="./img/lux.gif" style={{ width:"85%", margin:"1rem"}} width="100%"></img> 
+              {/* <img src="./img/lux.gif" style={{ width:"85%", margin:"1rem"}} width="100%"></img>  */}
+              <iframe src="https://giphy.com/embed/JhA2onErIxHHi" width="100%" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cartoonhangover-lol-cartoon-hangover-league-of-legends-JhA2onErIxHHi"></a></p>
               <Button onClick={this.startClick.bind(this)} width="85%">
                 시작하기
               </Button>

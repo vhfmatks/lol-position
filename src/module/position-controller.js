@@ -75,14 +75,23 @@ function insertData(state){
 
   var newPostKey = firebase.database().ref().child('users').push().key;
 
-  var disc = state.disc.questions;
-  var weight = state.weight.questions;
+  // var disc = state.disc.questions;
+  // var weight = state.weight.questions;
+  var disc = [];
+  var weight = [];
   var position = [];
+  state.disc.questions.map((item, index)=>{
+    var obj = {id:item.id, answer:item.answer }
+    disc.push(obj);
+  })
+  state.weight.questions.map((item, index)=>{
+    var obj = {id:item.id, answer:item.answer}
+    weight.push(obj);
+  })
   state.position.position.map((item, index)=>{
     var obj = { pos : item.position, score : item.score }
     position.push(obj);
   })
-
   var insertData = {
     lolid : state.lolid,
     disc,
@@ -90,6 +99,7 @@ function insertData(state){
     position
   }
   
+  console.log(insertData);
 
   var updates = {};
   updates['/users/'+newPostKey] = insertData;
