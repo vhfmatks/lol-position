@@ -17,25 +17,35 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from '@rebass/preset';
 import { Button, Box } from 'rebass';
 import { Label, Input } from '@rebass/forms';
-import Graph from './components/Graph';
-
-
-
-
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      lolid : null,
-      startYn : true,
-      disc: { discYn: true, display: 0, questions: discQst },
-      weight: { weightYn: true, display: 0, questions: weightQst },
-      position: { posYn: false, position: posData }
-    };
+
+    const searchParams = new URLSearchParams(document.location.search);
+    if(searchParams.get('top') != null ){
+      this.state = {
+        lolid : null ,
+        startYn : false,
+        disc: { discYn: false, display: 0, questions: discQst },
+        weight: { weightYn: false, display: 0, questions: weightQst },
+        position: { posYn: true, position: [
+          { ...posData[0], score : parseInt(searchParams.get('top')) },
+          { ...posData[1], score : parseInt(searchParams.get('jg')) },
+          { ...posData[2], score : parseInt(searchParams.get('mid')) },
+          { ...posData[3], score : parseInt(searchParams.get('ad')) },
+          { ...posData[4], score : parseInt(searchParams.get('sup')) },
+        ] }
+      }
+    }else {
+      this.state = {
+        lolid : null,
+        startYn : true,
+        disc: { discYn: true, display: 0, questions: discQst },
+        weight: { weightYn: true, display: 0, questions: weightQst },
+        position: { posYn: false, position: posData }
+      };  
+    }
   }
-  // data = posData.map((item, index)=>{
-  //   return { "label":item.posNm , "score":item.score}
-  // });
   discClick = discClick;
   analyzeClick = analyzeClick;
   weightClick = weightClick;
@@ -81,14 +91,14 @@ class App extends Component {
       
     }
   }
-
   render() {
-    // console.log(this.getFireDb());
+
     return (
       <ThemeProvider theme={theme} >
         {/* <Header></Header> */}
        
         <div className="App">
+          
           {this.state.startYn ? 
             <div> 
               <h2> 성향별 LOL 포지션 분석 </h2>
@@ -98,7 +108,7 @@ class App extends Component {
               </Button>
             </div> 
             :
-            <div>
+            <div className='poll'>
             {
               !this.state.disc.discYn && !this.state.weight.weightYn ?
                 <div>

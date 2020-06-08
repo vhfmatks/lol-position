@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Image, Card, Heading,Text} from 'rebass';
+import {Image, Card, Heading,Text, Link, Button} from 'rebass';
 import Graph from './Graph';
 import LoadScript from 'react-load-script';
 
@@ -33,6 +33,7 @@ export default class Result extends Component {
     render() {
         //var { data } = this.state;
         var data = [];
+        console.log(this.state)
         data = this.state.data.map( (item, index) => {
             return { "label":item.name, "score":item.ratio }
         })
@@ -48,20 +49,26 @@ export default class Result extends Component {
                     {
                         this.state.data[0].description.split('\n').map((item, index)=>{
                             return(
-                                <Text> {item} </Text>
+                                <Text key={index}> {item} </Text>
                             )
                         })
                     }
                 </Card>
-           
                 <div style={{margin:'1rem'}}>
-                    <LoadScript url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ed746b735134eec"></LoadScript>
-                    <div className="addthis_inline_share_toolbox"></div>
+                    <LoadScript url="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ed746b735134eec"></LoadScript>
+                    <div className="addthis_inline_share_toolbox"
+                         data-url={'https://lol-position.netlify.app/?'+ this.state.data[0].position + '=' + this.state.data[0].score + '&'
+                         + this.state.data[1].position + '=' + this.state.data[1].score + '&'
+                         + this.state.data[2].position + '=' + this.state.data[2].score + '&'
+                         + this.state.data[3].position + '=' + this.state.data[3].score + '&'
+                         + this.state.data[4].position + '=' + this.state.data[4].score }></div>
                 </div>
                 
                 
                 <Graph width="80%" data={data} />       
-                
+                <Button style={{margin:'1rem'}} width='80%' onClick={() => document.location.href='./'}> 새로 분석하기 </Button>
+
+                <hr></hr>
                
                 <iframe src="https://coupa.ng/bDAat8" width="120" height="240" frameborder="0" scrolling="no"></iframe>  
                 <iframe src="https://coupa.ng/bDAaeU" width="120" height="240" frameborder="0" scrolling="no"></iframe>
