@@ -96,7 +96,8 @@ function insertData(state){
     lolid : state.lolid,
     disc,
     weight,
-    position
+    position,
+    dt : Date.now()
   }
   
   console.log(insertData);
