@@ -92,12 +92,13 @@ function insertData(state){
     var obj = { pos : item.position, score : item.score }
     position.push(obj);
   })
+  var today=new Date();
   var insertData = {
     lolid : state.lolid,
     disc,
     weight,
     position,
-    dt : Date.now()
+    dt : today
   }
   
   console.log(insertData);
