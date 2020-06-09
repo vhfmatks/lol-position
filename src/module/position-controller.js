@@ -92,7 +92,7 @@ function insertData(state){
     var obj = { pos : item.position, score : item.score }
     position.push(obj);
   })
-  var today=new Date();
+  var today=new Date().toLocaleString("ko-KR", {timeZone: "Asia/Seoul"});
   var insertData = {
     lolid : state.lolid,
     disc,
